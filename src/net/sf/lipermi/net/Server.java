@@ -68,16 +68,24 @@ public class Server {
         enabled = false;
     }
 
-    public void bind(int port, CallHandler callHandler) throws IOException {
-        bind(port, callHandler, new DefaultFilter());
+    public int bind(final CallHandler callHandler) throws IOException {
+        return bind(-1, callHandler);
     }
 
-    public void bind(final int port, final CallHandler callHandler, final IProtocolFilter filter) throws IOException {
+    public int bind(int port, final CallHandler callHandler) throws IOException {
+        return bind(port, callHandler, new DefaultFilter());
+    }
+
+    public int bind(int port, final CallHandler callHandler, final IProtocolFilter filter) throws IOException {
         serverSocket = new ServerSocket();
         serverSocket.setPerformancePreferences(1, 0, 2);
         enabled = true;
 
-        serverSocket.bind(new InetSocketAddress(port));
+        if (port >= 0) {
+            serverSocket.bind(new InetSocketAddress(port));
+        } else {
+            serverSocket.bind(null);
+        }
 
         Thread bindThread = new Thread(new Runnable() {
             public void run() {
@@ -107,6 +115,8 @@ public class Server {
             }
         }, String.format("Bind (%d)", port)); //$NON-NLS-1$ //$NON-NLS-2$
         bindThread.start();
+
+        return serverSocket.getLocalPort();
     }
 
 }

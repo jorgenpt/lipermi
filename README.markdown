@@ -7,8 +7,8 @@ some changes I wanted to make.
 
 The original project can be found here:
 
- * [http://lipermi.sourceforge.net]
- * [http://www.sourceforge.net/project/lipermi]
+ * http://lipermi.sourceforge.net
+ * http://www.sourceforge.net/project/lipermi
 
 My interest in this project is as an RMI solution for Android. There is no
 java.rmi on Android, and porting it is cumbersome. LipeRMI has no dependencies
@@ -18,4 +18,4 @@ small code-base.
 JavaDoc
 -------
 
-You can find JavaDoc here: [http://jorgenpt.github.com/lipermi/]
+You can find JavaDoc here: http://jorgenpt.github.com/lipermi/

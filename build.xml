@@ -12,4 +12,10 @@
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/lipermi.jar" basedir="build/classes"/>
     </target>
+
+    <target name="doc">
+      <delete dir="build/doc"/>
+      <mkdir dir="build/doc"/>
+      <javadoc sourcepath="src" destdir="build/doc"/>
+    </target>
 </project>
